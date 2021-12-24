@@ -16,6 +16,9 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
+  css: [
+    '@/assets/scss/main.scss',
+  ],
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
 
@@ -23,7 +26,13 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [],
+  buildModules: [
+    '@nuxtjs/vuetify',
+  ],
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    optionsPath: '~/vuetify.options.js'
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: []
