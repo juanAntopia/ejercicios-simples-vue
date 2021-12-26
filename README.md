@@ -17,3 +17,4 @@ To get started with Nuxt.js deployed with Vercel, you can use the [Create-Nuxt-A
 ```shell
 $ npx create-nuxt-app my-app
 ```
+updated
