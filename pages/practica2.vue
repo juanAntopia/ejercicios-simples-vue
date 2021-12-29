@@ -1,9 +1,19 @@
 <template>
-  <v-sheet color="#034071">
+  <v-sheet color="#034071" style="overflow: hidden; position:relative">
     <div class="Practica2">
       <v-container fluid>
         <v-row style="min-height: 100vh" align="center" justify="center">
           <v-col cols="auto" class="pa-0" id="Fly">
+            <div class="clouds">
+              <img :src="require('@/assets/img/cloud1.png')" alt="" style="--i:1">
+              <img :src="require('@/assets/img/cloud2.png')" alt="" style="--i:2">
+              <img :src="require('@/assets/img/cloud3.png')" alt="" style="--i:3">
+            </div>
+            <div class="clouds clouds2">
+              <img :src="require('@/assets/img/cloud1.png')" alt="" style="--i:1">
+              <img :src="require('@/assets/img/cloud2.png')" alt="" style="--i:2">
+              <img :src="require('@/assets/img/cloud3.png')" alt="" style="--i:3">
+            </div>
             <div class="runway"></div>
             <img
               :src="require('@/assets/img/plane.png')"
@@ -35,12 +45,63 @@ export default {
   filter: drop-shadow(10px 10px 0 rgba(0, 0, 0, 0.5));
   transition: 5s;
 }
+
+.clouds{
+  position: absolute;
+  left: 0;
+  z-index: 10000;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 2s;
+  transition-delay: 0s;
+
+  img{
+    position: absolute;
+    left: 0;
+    width: 800px;
+    animation: animateClouds 4s linear infinite;
+    animation-delay: calc(-1.5s * var(--i));
+  }
+}
+
+.clouds2
+{
+  right: 0;
+  transform: rotate(180deg);
+
+  img{
+    animation: animateClouds2 4s linear infinite;
+    animation-delay: calc(-1.5s * var(--i));
+    
+  }
+}
+
+@keyframes animateClouds {
+  0%{
+    transform: translateY(-100%);
+  }
+  100%{
+    transform: translateY(100%);
+  }
+}
+
+@keyframes animateClouds2 {
+  0%{
+    transform: translateY(100%);
+  }
+  100%{
+    transform: translateY(-100%);
+  }
+}
+
 #Fly {
   .runway {
+    height: 100vh;
     position: relative;
     width: 400px;
     max-width: 100%;
-    min-height: 100vh;
     background: #1378bc;
     border-left: 20px solid rgba(0, 0, 0, 0.25);
     border-right: 20px solid rgba(0, 0, 0, 0.25);
@@ -78,6 +139,10 @@ export default {
     .plane {
       max-width: 500px;
       filter: drop-shadow(200px 200px 0 rgba(0, 0, 0, 0.5));
+    }
+
+    .clouds{
+      opacity: 1;
     }
   }
 }
